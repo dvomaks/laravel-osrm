@@ -1,0 +1,21 @@
+{
+    "name": "dvomaks/laravel-osrm",
+    "description": "Simple wrapper for OSRM services",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dvomaks\\LaravelOsrm\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maks Dvorak",
+            "email": "dvomaks@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "ext-curl": "*"
+    }
+}
