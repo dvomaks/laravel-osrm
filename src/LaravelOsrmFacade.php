@@ -13,6 +13,6 @@ class LaravelOsrmFacade extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'laravel-osrm';
+        return 'laravel_osrm';
     }
 }

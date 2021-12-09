@@ -1,19 +1,20 @@
 <?php
+
 namespace Dvomaks\LaravelOsrm\Service;
 
 use Dvomaks\LaravelOsrm\AbstractService;
 use Dvomaks\LaravelOsrm\Exception;
 
-class Table extends AbstractService
+class TableService extends AbstractService
 {
     protected ?string $service = 'table';
 
     /**
      * @param string $value
-     * @return Table
+     * @return TableService
      * @throws Exception
      */
-    public function setSources(string $value): Table
+    public function setSources(string $value): TableService
     {
         if (!($value === 'all' || preg_match('/^\d+(?:;\d+)*$/', $value)))
         {
@@ -25,10 +26,10 @@ class Table extends AbstractService
 
     /**
      * @param string $value
-     * @return Table
+     * @return TableService
      * @throws Exception
      */
-    public function setDestinations(string $value): Table
+    public function setDestinations(string $value): TableService
     {
         if (!($value === 'all' || preg_match('/^\d+(?:;\d+)*$/', $value)))
         {
@@ -40,10 +41,10 @@ class Table extends AbstractService
 
     /**
      * @param string $value
-     * @return Table
+     * @return TableService
      * @throws Exception
      */
-    public function setAnnotations(string $value): Table
+    public function setAnnotations(string $value): TableService
     {
         if (!in_array($value, array('duration', 'distance', 'duration,distance')))
         {
@@ -55,19 +56,19 @@ class Table extends AbstractService
 
     /**
      * @param float $value
-     * @return Table
+     * @return TableService
      */
-    public function setFallbackSpeed(float $value): Table
+    public function setFallbackSpeed(float $value): TableService
     {
         return $this->setOption('fallback_speed', $value);
     }
 
     /**
      * @param string $value
-     * @return Table
+     * @return TableService
      * @throws Exception
      */
-    public function setFallbackCoordinate(string $value): Table
+    public function setFallbackCoordinate(string $value): TableService
     {
         if (!in_array($value, array('input', 'snapped')))
         {
@@ -79,9 +80,9 @@ class Table extends AbstractService
 
     /**
      * @param float $value
-     * @return Table
+     * @return TableService
      */
-    public function setScaleFactor(float $value): Table
+    public function setScaleFactor(float $value): TableService
     {
         return $this->setOption('scale_factor', $value);
     }

@@ -1,19 +1,20 @@
 <?php
+
 namespace Dvomaks\LaravelOsrm\Service;
 
 use Dvomaks\LaravelOsrm\AbstractService;
 use Dvomaks\LaravelOsrm\Exception;
 
-class Nearest extends AbstractService
+class NearestService extends AbstractService
 {
     protected ?string $service = 'nearest';
 
     /**
      * @param numeric $value
-     * @return Nearest
+     * @return NearestService
      * @throws Exception
      */
-    public function setNumber($value): Nearest
+    public function setNumber($value): NearestService
     {
         if (!(is_numeric($value) && (int) $value >= 1))
         {

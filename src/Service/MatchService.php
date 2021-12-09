@@ -1,60 +1,60 @@
 <?php
-namespace Dvomaks\LaravelOsrm\Service;
 
+namespace Dvomaks\LaravelOsrm\Service;
 
 use Dvomaks\LaravelOsrm\AbstractService;
 use Dvomaks\LaravelOsrm\Exception;
 
-class Match extends AbstractService
+class MatchService extends AbstractService
 {
     protected ?string $service = 'match';
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setSteps(string $value): Match
+    public function setSteps(string $value): MatchService
     {
         return $this->_setSteps($value);
     }
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setGeometries(string $value): Match
+    public function setGeometries(string $value): MatchService
     {
         return $this->_setGeometries($value);
     }
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setAnnotations(string $value): Match
+    public function setAnnotations(string $value): MatchService
     {
         return $this->_setAnnotations($value);
     }
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setOverview(string $value): Match
+    public function setOverview(string $value): MatchService
     {
         return $this->_setOverview($value);
     }
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setTimestamps(string $value): Match
+    public function setTimestamps(string $value): MatchService
     {
         if (!preg_match('/^\d{10}(?:;\d{10})*$/', $value))
         {
@@ -66,10 +66,10 @@ class Match extends AbstractService
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setGaps(string $value): Match
+    public function setGaps(string $value): MatchService
     {
         if (!in_array($value, array('split', 'ignore')))
         {
@@ -81,10 +81,10 @@ class Match extends AbstractService
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setTidy(string $value): Match
+    public function setTidy(string $value): MatchService
     {
         if (!in_array($value, array('true', 'false')))
         {
@@ -96,10 +96,10 @@ class Match extends AbstractService
 
     /**
      * @param string $value
-     * @return Match
+     * @return MatchService
      * @throws Exception
      */
-    public function setWaypoints(string $value): Match
+    public function setWaypoints(string $value): MatchService
     {
         return $this->_setWaypoints($value);
     }

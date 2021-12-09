@@ -1,4 +1,5 @@
 <?php
+
 namespace Dvomaks\LaravelOsrm;
 
 class Transport
@@ -16,7 +17,7 @@ class Transport
     protected string $userAgent = 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36';
 
     protected string $serviceUrl;
-    
+
     public function __construct(string $serviceUrl)
     {
         $this->serviceUrl = $serviceUrl;

@@ -16,6 +16,9 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "ext-curl": "*"
+        "php": "^7.4|^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "illuminate/support": "5.1 - 5.8|^6.0|^7.0|^8.0"
     }
 }

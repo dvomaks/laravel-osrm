@@ -1,9 +1,10 @@
 <?php
+
 namespace Dvomaks\LaravelOsrm\Service;
 
 use Dvomaks\LaravelOsrm\AbstractService;
 
-class Tile extends AbstractService
+class TileService extends AbstractService
 {
     protected ?string $service = 'tile';
 

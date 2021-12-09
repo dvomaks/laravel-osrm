@@ -1,59 +1,60 @@
 <?php
+
 namespace Dvomaks\LaravelOsrm\Service;
 
 use Dvomaks\LaravelOsrm\AbstractService;
 use Dvomaks\LaravelOsrm\Exception;
 
-class Trip extends AbstractService
+class TripService extends AbstractService
 {
     protected ?string $service = 'trip';
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setOverview(string $value): Trip
+    public function setOverview(string $value): TripService
     {
         return $this->_setOverview($value);
     }
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setSteps(string $value): Trip
+    public function setSteps(string $value): TripService
     {
         return $this->_setSteps($value);
     }
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setGeometries(string $value): Trip
+    public function setGeometries(string $value): TripService
     {
         return $this->_setGeometries($value);
     }
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setAnnotations(string $value): Trip
+    public function setAnnotations(string $value): TripService
     {
         return $this->_setAnnotations($value);
     }
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setSource(string $value): Trip
+    public function setSource(string $value): TripService
     {
         if (!in_array($value, array('any', 'first')))
         {
@@ -65,10 +66,10 @@ class Trip extends AbstractService
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setDestination(string $value): Trip
+    public function setDestination(string $value): TripService
     {
         if (!in_array($value, array('any', 'last')))
         {
@@ -80,10 +81,10 @@ class Trip extends AbstractService
 
     /**
      * @param string $value
-     * @return Trip
+     * @return TripService
      * @throws Exception
      */
-    public function setRoundtrip(string $value): Trip
+    public function setRoundtrip(string $value): TripService
     {
         if (!in_array($value, array('true', 'false')))
         {

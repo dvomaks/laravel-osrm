@@ -14,14 +14,14 @@ abstract class AbstractService
     protected ?string $service; //route, nearest, table, match, trip, tile
 
     protected string $version = 'v1';
-    
+
     protected string $serviceUrl;
 
     public function __construct(string $serviceUrl)
     {
         $this->serviceUrl = $serviceUrl;
     }
-    
+
     /**
      * @param string $coordinates
      * @return Response
