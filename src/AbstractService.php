@@ -1,6 +1,8 @@
 <?php
 namespace Dvomaks\LaravelOsrm;
 
+use Dvomaks\LaravelOsrm\Transports\TransportInterface;
+
 abstract class AbstractService
 {
     protected ?string $coordinates;
@@ -15,27 +17,24 @@ abstract class AbstractService
 
     protected string $version = 'v1';
 
-    protected string $serviceUrl;
-
-    public function __construct(string $serviceUrl)
-    {
-        $this->serviceUrl = $serviceUrl;
+    public function __construct(TransportInterface $transport) {
+        $this->transport = $transport;
     }
+
+    protected ?TransportInterface $transport;
 
     /**
      * @param string $coordinates
      * @return Response
-     * @throws Exception
      * @throws \JsonException
      */
     public function fetch(string $coordinates): Response
     {
         $this->coordinates = $coordinates;
 
-        $transport = new Transport($this->serviceUrl);
-        $transport->request($this->getUri());
+        $this->transport->request($this->getUri());
 
-        return new Response($transport->getResponse());
+        return new Response($this->transport->getResponse());
     }
 
     /**

@@ -16,7 +16,10 @@ class LaravelOsrmServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'laravel-osrm');
 
         $this->app->singleton('laravel_osrm', function ($app) {
-            return new LaravelOsrm($app['config']['laravel-osrm']['service_url']);
+            $transportClass = $app['config']['laravel-osrm']['transport_class'];
+            $transport = new $transportClass($app['config']['laravel-osrm']['service_url']);
+
+            return new LaravelOsrm($transport);
         });
     }
 
@@ -24,6 +27,7 @@ class LaravelOsrmServiceProvider extends ServiceProvider
      * Bootstrap services.
      *
      * @return void
+     * @noinspection PhpUndefinedFunctionInspection
      */
     public function boot(): void
     {

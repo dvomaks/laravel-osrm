@@ -1,5 +1,8 @@
 <?php
 
+use Dvomaks\LaravelOsrm\Transports\CurlTransport;
+
 return [
-    'service_url' => 'http://router.project-osrm.org/',
+    'service_url' => 'https://router.project-osrm.org/',
+    'transport_class' => CurlTransport::class
 ];

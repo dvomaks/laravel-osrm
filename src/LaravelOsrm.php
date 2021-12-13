@@ -8,43 +8,44 @@ use Dvomaks\LaravelOsrm\Service\RouteService;
 use Dvomaks\LaravelOsrm\Service\TableService;
 use Dvomaks\LaravelOsrm\Service\TileService;
 use Dvomaks\LaravelOsrm\Service\TripService;
+use Dvomaks\LaravelOsrm\Transports\TransportInterface;
 
 class LaravelOsrm
 {
-    private string $serviceUrl;
+    private TransportInterface $transport;
 
-    public function __construct($serviceUrl)
+    public function __construct($transport)
     {
-        $this->serviceUrl = $serviceUrl;
+        $this->transport = $transport;
     }
 
     public function match(): MatchService
     {
-        return new MatchService($this->serviceUrl);
+        return new MatchService($this->transport);
     }
 
     public function nearest(): NearestService
     {
-        return new NearestService($this->serviceUrl);
+        return new NearestService($this->transport);
     }
 
     public function route(): RouteService
     {
-        return new RouteService($this->serviceUrl);
+        return new RouteService($this->transport);
     }
 
     public function table(): TableService
     {
-        return new TableService($this->serviceUrl);
+        return new TableService($this->transport);
     }
 
     public function tile(): TileService
     {
-        return new TileService($this->serviceUrl);
+        return new TileService($this->transport);
     }
 
     public function trip(): TripService
     {
-        return new TripService($this->serviceUrl);
+        return new TripService($this->transport);
     }
 }

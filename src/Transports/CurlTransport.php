@@ -1,8 +1,10 @@
 <?php
 
-namespace Dvomaks\LaravelOsrm;
+namespace Dvomaks\LaravelOsrm\Transports;
 
-class Transport
+use Dvomaks\LaravelOsrm\Exception;
+
+class CurlTransport implements TransportInterface
 {
     protected int $connectTimeout = 10;
 
@@ -29,13 +31,15 @@ class Transport
      * @throws Exception
      * @noinspection CurlSslServerSpoofingInspection
      */
-    public function request(string $path): Transport
+    public function request(string $path): TransportInterface
     {
         $ch = curl_init();
         if (!$ch)
         {
             throw new Exception('Failed to initialize a cURL session');
         }
+
+        curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         curl_setopt($ch, CURLOPT_USERAGENT, $this->userAgent);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
         curl_setopt($ch, CURLOPT_TIMEOUT, $this->timeout);
@@ -82,7 +86,7 @@ class Transport
      * @param int $value
      * @return $this
      */
-    public function setConnectTimeout(int $value): Transport
+    public function setConnectTimeout(int $value): TransportInterface
     {
         $this->connectTimeout = $value;
 
@@ -93,7 +97,7 @@ class Transport
      * @param int $value
      * @return $this
      */
-    public function setTimeout(int $value): Transport
+    public function setTimeout(int $value): TransportInterface
     {
         $this->timeout = $value;
 
@@ -104,7 +108,7 @@ class Transport
      * @param string $value
      * @return $this
      */
-    public function setUserAgent(string $value): Transport
+    public function setUserAgent(string $value): TransportInterface
     {
         $this->userAgent = $value;
 
@@ -115,7 +119,7 @@ class Transport
      * @param bool $value
      * @return $this
      */
-    public function setSslVerifyPeer(bool $value): Transport
+    public function setSslVerifyPeer(bool $value): TransportInterface
     {
         $this->sslVerifyPeer = $value;
 
